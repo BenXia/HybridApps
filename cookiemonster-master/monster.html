@@ -1,0 +1,28 @@
+<head>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+<script>
+var c = document.cookie;
+var m = c.match(/code=(\w+)/);
+var name;
+var urlScheme = "cookiemonster://";
+
+location.reload();
+
+if (m) {
+  var code = m[1];
+  document.writeln("Found cookie: " + code);
+  name = code;
+  
+  var codeUrl = urlScheme + "opencode?code=" + code;
+  window.location.href = codeUrl;
+} else {
+  document.writeln("Could not find cookie :(");
+  window.location.href = urlScheme;
+}
+
+</script>
+
+</body>
