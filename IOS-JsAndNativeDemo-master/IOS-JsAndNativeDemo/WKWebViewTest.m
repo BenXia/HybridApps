@@ -62,7 +62,14 @@
     self.webView.allowsBackForwardNavigationGestures =YES;//侧滑
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
+    
+    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
+    
+//    NSURL *pathUrl = [[NSBundle mainBundle] URLForResource:@"index3.html" withExtension:nil];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:pathUrl]];
+    
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
     [self.view addSubview:self.webView];
     
 
@@ -104,6 +111,9 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     // 在收到响应后，决定是否跳转
     NSLog(@"%s",__func__);
+    
+    decisionHandler(WKNavigationResponsePolicyAllow);
+    return;
     
     
     // 如果响应的地址是，则允许跳转
