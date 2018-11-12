@@ -32,7 +32,9 @@
 
 - (void)buttonClicked{
     WWBaseWKWebViewController *webVC = [WWBaseWKWebViewController new];
-    webVC.urlStr = @"http:192.168.1.34/webTest/app.html";
+    webVC.urlStr = @"https://www.baidu.com";
+    
+    //webVC.urlStr = @"http:192.168.1.34/webTest/app.html";
     //WWBaseWebViewController *webVC = [WWBaseWebViewController new];
     //webVC.urlStr = @"http:192.168.10.48/webTest/app.html";
     [self.navigationController pushViewController:webVC animated:YES];
