@@ -19,15 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    
-    
 }
+
 //webview与js交互界面
 - (IBAction)webViewBtnClick:(UIButton *)sender {
     WebViewTest *webTest = [[WebViewTest alloc]init];
     [self.navigationController pushViewController:webTest animated:YES];
 }
+
 //wkwebview与js交互界面
 - (IBAction)wkWebViewBtnClick:(UIButton *)sender {
     WKWebViewTest *wkWebTest = [[WKWebViewTest alloc]init];

@@ -24,6 +24,7 @@
 		6E4B5C691D643D3B006FD478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E4B5C681D643D3B006FD478 /* Assets.xcassets */; };
 		6E4B5C6C1D643D3B006FD478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E4B5C6A1D643D3B006FD478 /* LaunchScreen.storyboard */; };
 		6E4B5C771D643D3C006FD478 /* IOS_JsAndNativeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4B5C761D643D3C006FD478 /* IOS_JsAndNativeDemoTests.m */; };
+		B554788C21994A990005F5DB /* test.css in Resources */ = {isa = PBXBuildFile; fileRef = B554788B21994A990005F5DB /* test.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		6E4B5C721D643D3C006FD478 /* IOS-JsAndNativeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS-JsAndNativeDemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4B5C761D643D3C006FD478 /* IOS_JsAndNativeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOS_JsAndNativeDemoTests.m; sourceTree = "<group>"; };
 		6E4B5C781D643D3C006FD478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B554788B21994A990005F5DB /* test.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = test.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		6E4B5C5B1D643D3B006FD478 /* IOS-JsAndNativeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B554788B21994A990005F5DB /* test.css */,
 				6E1E68D71D6698B3007C93AB /* index3.html */,
 				6E4B5C5F1D643D3B006FD478 /* AppDelegate.h */,
 				6E4B5C601D643D3B006FD478 /* AppDelegate.m */,
@@ -222,7 +225,7 @@
 		6E4B5C511D643D3B006FD478 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = ZhangPeng;
 				TargetAttributes = {
 					6E4B5C581D643D3B006FD478 = {
@@ -262,6 +265,7 @@
 				6E0EE3B51D70319500EB7DEB /* WebViewTest.xib in Resources */,
 				6E4B5C6C1D643D3B006FD478 /* LaunchScreen.storyboard in Resources */,
 				6E1E68D81D6698B3007C93AB /* index3.html in Resources */,
+				B554788C21994A990005F5DB /* test.css in Resources */,
 				6E4B5C691D643D3B006FD478 /* Assets.xcassets in Resources */,
 				6E4B5C671D643D3B006FD478 /* Main.storyboard in Resources */,
 			);
