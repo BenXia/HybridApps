@@ -1,0 +1,8 @@
+use_frameworks!
+
+target 'WKWebViewDemo1' do
+    
+  pod 'JKSandBoxManager'
+  pod 'AFNetworking'
+
+end

@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>index_legend2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" charset="utf-8">
+		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="./test.css">
+		<script type="text/javascript">
+			$(function(){
+				$("#getVersion").click(function(){
+					var appVersion = Zhujiayi.getVersion();
+					console.log(appVersion);
+					alert(appVersion);
+				});
+
+				$("#getSum").click(function(){
+					var sum = Zhujiayi.getSum(1, 2, 93);
+					console.log(sum);
+					alert(sum);
+				});
+
+				$("#showNotice").click(function(){
+					Zhujiayi.showNotice("this is a test!!!");
+				});
+              
+			});
+		</script>
+	</head>
+    <body>
+        <div class="bottom_text" id="bottom_text">底部文字</div>
+        <div class="image_content"><img id="justdoit_image" src="./test.png" alt="logo image" /></div>
+	</body>
+    
+    <script src="./test.js"></script>
+<!--    <script type="text/javascript">-->
+<!--        var myDiv = document.getElementById("bottom_text");-->
+<!--        -->
+<!--        //var myImage = document.getElementById("justdoit_image");-->
+<!--        -->
+<!--        myDiv.onclick = function() {-->
+<!--            alert("abc");-->
+<!--        }-->
+<!--    </script>-->
+
+<!--    <style>-->
+<!--        .bottom_text {-->
+<!--            color: red;-->
+<!--            font-size: 3rem;-->
+<!--        }-->
+<!--    </style>-->
+</html>

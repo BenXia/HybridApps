@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333092B72199D3E300C8071A /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 333092B62199D3E300C8071A /* test.js */; };
+		333092B92199D5C500C8071A /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 333092B82199D5C500C8071A /* test.png */; };
+		333092BB2199D64400C8071A /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 333092BA2199D64400C8071A /* test2.jpg */; };
+		333092BD2199D89B00C8071A /* LocalH5.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 333092BC2199D89B00C8071A /* LocalH5.bundle */; };
+		333092BF2199DBD000C8071A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 333092BE2199DBCF00C8071A /* index.html */; };
 		6E0EE3B01D70315600EB7DEB /* WKWebViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3AF1D70315600EB7DEB /* WKWebViewTest.m */; };
 		6E0EE3B41D70319500EB7DEB /* WebViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3B21D70319500EB7DEB /* WebViewTest.m */; };
 		6E0EE3B51D70319500EB7DEB /* WebViewTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0EE3B31D70319500EB7DEB /* WebViewTest.xib */; };
@@ -38,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		333092B62199D3E300C8071A /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		333092B82199D5C500C8071A /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		333092BA2199D64400C8071A /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
+		333092BC2199D89B00C8071A /* LocalH5.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LocalH5.bundle; sourceTree = "<group>"; };
+		333092BE2199DBCF00C8071A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		6E0EE3AE1D70315600EB7DEB /* WKWebViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewTest.h; sourceTree = "<group>"; };
 		6E0EE3AF1D70315600EB7DEB /* WKWebViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewTest.m; sourceTree = "<group>"; };
 		6E0EE3B11D70319500EB7DEB /* WebViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewTest.h; sourceTree = "<group>"; };
@@ -146,6 +156,10 @@
 		6E4B5C5B1D643D3B006FD478 /* IOS-JsAndNativeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				333092BE2199DBCF00C8071A /* index.html */,
+				333092B82199D5C500C8071A /* test.png */,
+				333092BA2199D64400C8071A /* test2.jpg */,
+				333092B62199D3E300C8071A /* test.js */,
 				B554788B21994A990005F5DB /* test.css */,
 				6E1E68D71D6698B3007C93AB /* index3.html */,
 				6E4B5C5F1D643D3B006FD478 /* AppDelegate.h */,
@@ -160,6 +174,7 @@
 				6E4B5C6D1D643D3B006FD478 /* Info.plist */,
 				6E1E68E61D6AE462007C93AB /* SVProgressHUD */,
 				6E4B5C5C1D643D3B006FD478 /* Supporting Files */,
+				333092BC2199D89B00C8071A /* LocalH5.bundle */,
 			);
 			path = "IOS-JsAndNativeDemo";
 			sourceTree = "<group>";
@@ -263,10 +278,15 @@
 			files = (
 				6E1E68EF1D6AE463007C93AB /* SVProgressHUD.bundle in Resources */,
 				6E0EE3B51D70319500EB7DEB /* WebViewTest.xib in Resources */,
+				333092B92199D5C500C8071A /* test.png in Resources */,
+				333092B72199D3E300C8071A /* test.js in Resources */,
 				6E4B5C6C1D643D3B006FD478 /* LaunchScreen.storyboard in Resources */,
 				6E1E68D81D6698B3007C93AB /* index3.html in Resources */,
+				333092BB2199D64400C8071A /* test2.jpg in Resources */,
 				B554788C21994A990005F5DB /* test.css in Resources */,
 				6E4B5C691D643D3B006FD478 /* Assets.xcassets in Resources */,
+				333092BF2199DBD000C8071A /* index.html in Resources */,
+				333092BD2199D89B00C8071A /* LocalH5.bundle in Resources */,
 				6E4B5C671D643D3B006FD478 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

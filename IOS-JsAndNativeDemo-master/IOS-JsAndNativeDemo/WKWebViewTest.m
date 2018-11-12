@@ -60,24 +60,83 @@
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
     
-    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
+//    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
     
-    NSURL *baseUrl = [NSURL URLWithString:@"file:///"];
-    [self.webView loadHTMLString: baseURL:baseUrl];
-    
-//    NSURL *pathUrl = [[NSBundle mainBundle] URLForResource:@"index3.html" withExtension:nil];
+//    NSURL *pathUrl = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:pathUrl]];
     
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
+    
+    // 测试加载本地html、css、js、图片
+//    NSURL *baseUrl = [NSURL URLWithString:@"file:///"];
+//    [self.webView loadHTMLString:[self getHtmlString] baseURL:baseUrl];
+    
+    
+    // 我这里是将html资源文件放置在工程内一个bundle的文件夹内
+//    NSString *path = [[[NSBundle mainBundle] pathForResource:@"LocalH5" ofType:@"bundle"] stringByAppendingPathComponent:@"index.html"];
+//    // 拼接后的网页路径
+//    NSString *url = [self componentFileUrlWithOriginFilePath:path Dictionary:@{@"key":@"value"}];
+//    // 加载网页
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    
+    
+    // WKWebView加载沙盒内Html页面
+    // 将要加载的html路径
+//    NSString *urlStr1 = @"~/Cache/fund/index.html";
+//    // 将要加载的html路径的上一层级路径
+//    NSString *urlStr2 = @"~/Cache/fund";
+//    self.url = [self componentFileUrlWithOriginFilePath:urlStr1 Dictionary:@{@"key":@"value"}];
+//
+//    [self.webView loadFileURL:[NSURL URLWithString:self.url] allowingReadAccessToURL:[NSURL fileURLWithPath:urlStr2]];
+
+    
     [self.view addSubview:self.webView];
 }
 
 - (NSString *)getHtmlString {
-    NSMutableString *html = [NSMutableString string]
+    NSMutableString *html = [NSMutableString string];
     [html appendString:@"<html>"];
     [html appendString:@"<head>"];
+    [html appendFormat:@"<link rel=\"stylesheet\" href=\"%@\">", [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"css"]];
+    [html appendString:@"</head>"];
     
+    [html appendString:@"<body style=\"background:#f6f6f6\">"];
+    [html appendString:[self getBodyString]];
+    [html appendString:@"</body>"];
+    [html appendFormat:@"<script src=\"%@\"></script>", [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"js"]];
+    [html appendString:@"</html>"];
+    
+    return html;
+}
+
+- (NSString *)getBodyString {
+    NSURL *imagePathUrl = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"png"];
+    
+    return [NSString stringWithFormat:@"<div class=\"bottom_text\" id=\"bottom_text\">hello world</div><div class=\"image_content\"><img id=\"justdoit_image\" src=\"%@\" alt=\"logo image\" /></div>", imagePathUrl];
+}
+
+/**
+ 本地网页数据拼接
+ 
+ @param filePath 网页路径
+ @param dictionary 拼接的参数
+ @return 拼接后网页路径字符串
+ */
+- (NSString *)componentFileUrlWithOriginFilePath:(NSString *)filePath Dictionary:(NSDictionary *)dictionary{
+    NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
+    // NO代表此路径没有下一级，等同于[NSURL fileURLWithPath:filePath];
+    // 如果设置为YES，则路径会自动添加一个“/”
+    NSURLComponents *urlComponents = [[NSURLComponents alloc]initWithURL:url resolvingAgainstBaseURL:NO];
+    NSMutableArray *mutArray = [NSMutableArray array];
+    for (NSString *key in dictionary.allKeys) {
+        NSURLQueryItem *item = [NSURLQueryItem queryItemWithName:key value:dictionary[key]];
+        [mutArray addObject:item];
+    }
+    [urlComponents setQueryItems:mutArray];
+    // urlComponents.URL  返回拼接后的(NSURL *)
+    // urlComponents.string 返回拼接后的(NSString *)
+    return urlComponents.string;
 }
 
 #pragma mark- WKNavigationDelegate

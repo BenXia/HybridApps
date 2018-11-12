@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>测试iOS与JS之间的互调</title>  
+    <style type="text/css">  
+        {  
+            font-size: 40px;  
+        }  
+    </style>  
+</head>  
+<body>  
+<div style="rargin-top: 100px;">  
+    <h1>Test how to use Objective-C call js</h1>  
+    <input type="button" value="Call iOS" onclick="calliOS('call iOS')">  
+    <input type="button" value="Call JS Alert" onclick="jsFunc()">  
+</div>  
+<div>  
+    <input type="button" value="iOS Call With No JSON" onclick="callJS()">  
+    <input type="button" value="iOS Call With JSON" onclick="callJSMsg('iOS Call JS')">  
+</div>  
+<div>  
+    <span id="jsParatFuncSpan" style="color:red; font-size:50px;"></span>  
+</div>  
+</body>  
+<script type="text/JavaScript" src="appJs.js"></script>  
+</html>  
