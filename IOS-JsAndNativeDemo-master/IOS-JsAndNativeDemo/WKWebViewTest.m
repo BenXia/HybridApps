@@ -95,13 +95,50 @@
 //    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"arg1Name":@"arg1Value"}];
 //    [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:bundleUrl];
     
-    // 8. WKWebView加载沙盒内 html、css、js、图片（支持传参数）
+    // 8. 添加参数方式的研究
+    // 将要加载的html路径
+//    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//    // 将要加载的html路径的上一层级路径
+//    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    
+    // 下面的两种都不能用
+//    NSString *testPath = [htmlPath stringByAppendingPathComponent:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:testPath]);
+//    // /var/containers/Bundle/Application/8070B925-4CB7-44AE-8D8A-30D14F9EB070/IOS-JsAndNativeDemo.app/index.html/?sId=417492&a ... 0.1:8888
+//    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath]);
+//    // file:///var/containers/Bundle/Application/8070B925-4CB7-44AE-8D8A-30D14F9EB070/IOS-JsAndNativeDemo.app/index.html/%3FsId=417492&apiUrl=http:/192.168.100.1:8888
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:testPath]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath]]];
+    
+    // 不能用
+//    NSString *testPath2 = [htmlPath stringByAppendingString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath2]);
+//    // file:///var/containers/Bundle/Application/DCB4F9F3-EFF3-41EA-A7DA-6F78F198A2CB/IOS-JsAndNativeDemo.app/index.html%3FsId=417492&apiUrl=http://192.168.100.1:8888
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath2]]];
+    
+    // 能用
+//    NSString *filePath = [htmlPath stringByAppendingString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]]);
+//    // file:///var/containers/Bundle/Application/0FE76B0D-4203-41F5-B3BD-0273D32D780A/IOS-JsAndNativeDemo.app/index.html?sId=417492&apiUrl=http://192.168.100.1:8888
+//    NSURL *fileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:fileUrl]];
+    
+    // 能用
+//    NSURL *fileUrl = [NSURL URLWithString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"
+//                            relativeToURL:[NSURL fileURLWithPath:htmlPath]];   // 注意该处换成 [NSURL URLWithString: htmlPath] 就不能正常使用了
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:fileUrl]];
+    
+    // 能用
+//    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":@"http://192.168.100.1:8888"}];
+//    [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:bundleUrl];
+    
+    // 9. WKWebView加载沙盒内 html、css、js、图片（支持传参数）
     [self bundleToDocuments:@"index.html" existsCover:YES];
     [self bundleToDocuments:@"test.css" existsCover:YES];
     [self bundleToDocuments:@"test.js" existsCover:YES];
     [self bundleToDocuments:@"test.png" existsCover:YES];
     [self bundleToDocuments:@"test.jpg" existsCover:YES];
-    
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
     NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];
