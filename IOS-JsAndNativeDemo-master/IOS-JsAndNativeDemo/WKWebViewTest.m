@@ -60,36 +60,40 @@
     self.webView.UIDelegate = self;
     self.webView.navigationDelegate = self;
     
+    // 1. 加载本地 html（这种方法 UIWebView 可以但是 WKWebView 不行）
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
+    
+    // 2. 加载本地 html
 //    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
     
+    // 3. 加载本地 html
 //    NSURL *pathUrl = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:pathUrl]];
     
+    // 4. 加载远程 html
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
     
-    // 测试加载本地html、css、js、图片
+    // 5. 测试加载本地html、css、js、图片
 //    NSURL *baseUrl = [NSURL URLWithString:@"file:///"];
 //    [self.webView loadHTMLString:[self getHtmlString] baseURL:baseUrl];
-    
-    
-    // 我这里是将html资源文件放置在工程内一个bundle的文件夹内
+
+    // 6. 我这里是将html资源文件放置在工程内一个bundle的文件夹内
 //    NSString *path = [[[NSBundle mainBundle] pathForResource:@"LocalH5" ofType:@"bundle"] stringByAppendingPathComponent:@"index.html"];
 //    // 拼接后的网页路径
-//    NSString *url = [self componentFileUrlWithOriginFilePath:path Dictionary:@{@"key":@"value"}];
+//    NSString *urlString = [self componentFileUrlWithOriginFilePath:path Dictionary:@{@"key":@"value"}];
 //    // 加载网页
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
     
-    
-    // WKWebView加载沙盒内Html页面
+    // 7. WKWebView加载沙盒内Html页面
     // 将要加载的html路径
-//    NSString *urlStr1 = @"~/Cache/fund/index.html";
-//    // 将要加载的html路径的上一层级路径
-//    NSString *urlStr2 = @"~/Cache/fund";
-//    self.url = [self componentFileUrlWithOriginFilePath:urlStr1 Dictionary:@{@"key":@"value"}];
-//
-//    [self.webView loadFileURL:[NSURL URLWithString:self.url] allowingReadAccessToURL:[NSURL fileURLWithPath:urlStr2]];
-
+    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];   // 可以是沙盒中的文件  @"~/Cache/fund/index.html";
+    // 将要加载的html路径的上一层级路径
+    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];    // 可以是沙盒中的文件夹路径 @"~/Cache/fund"
+    
+    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath Dictionary:@{@"key":@"value"}];
+    [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:bundleUrl];
     
     [self.view addSubview:self.webView];
 }
@@ -127,7 +131,7 @@
     NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
     // NO代表此路径没有下一级，等同于[NSURL fileURLWithPath:filePath];
     // 如果设置为YES，则路径会自动添加一个“/”
-    NSURLComponents *urlComponents = [[NSURLComponents alloc]initWithURL:url resolvingAgainstBaseURL:NO];
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
     NSMutableArray *mutArray = [NSMutableArray array];
     for (NSString *key in dictionary.allKeys) {
         NSURLQueryItem *item = [NSURLQueryItem queryItemWithName:key value:dictionary[key]];

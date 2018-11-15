@@ -23,11 +23,96 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
     _webView.delegate = self;
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"];
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
+    // 1. 加载本地 html
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"];
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
+    
+    // 2. 加载本地 html
+//    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
+    
+    // 3. 加载本地 html
+//    NSURL *pathUrl = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
+//    [_webView loadRequest:[NSURLRequest requestWithURL:pathUrl]];
+    
+    // 4. 加载远程 html
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
+    
+    // 5. 测试加载本地html、css、js、图片
+//    NSURL *baseUrl = [NSURL URLWithString:@"file:///"];
+//    [_webView loadHTMLString:[self getHtmlString] baseURL:baseUrl];
+    
+    // 6. 我这里是将html资源文件放置在工程内一个bundle的文件夹内
+//    NSString *path = [[[NSBundle mainBundle] pathForResource:@"LocalH5" ofType:@"bundle"] stringByAppendingPathComponent:@"index.html"];
+//    // 拼接后的网页路径
+//    NSString *urlString = [self componentFileUrlWithOriginFilePath:path Dictionary:@{@"key":@"value"}];
+//    // 加载网页
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+    
+    // 7. UIWebView加载沙盒内Html页面
+//    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+//
+//    NSString *htmlString = [NSString stringWithContentsOfFile:htmlPath
+//                                                     encoding:NSUTF8StringEncoding
+//                                                        error:nil];
+//    [_webView loadHTMLString:htmlString baseURL:bundleUrl];
+    
+    // 8. UIWebView加载沙盒内Html页面
+    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+    NSData *htmlData = [[NSData alloc] initWithContentsOfFile:htmlPath];
+    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [_webView loadData:htmlData
+              MIMEType:@"text/html"
+      textEncodingName:@"UTF-8"
+               baseURL:bundleUrl];
+}
+
+- (NSString *)getHtmlString {
+    NSMutableString *html = [NSMutableString string];
+    [html appendString:@"<html>"];
+    [html appendString:@"<head>"];
+    [html appendFormat:@"<link rel=\"stylesheet\" href=\"%@\">", [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"css"]];
+    [html appendString:@"</head>"];
+    
+    [html appendString:@"<body style=\"background:#f6f6f6\">"];
+    [html appendString:[self getBodyString]];
+    [html appendString:@"</body>"];
+    [html appendFormat:@"<script src=\"%@\"></script>", [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"js"]];
+    [html appendString:@"</html>"];
+    
+    return html;
+}
+
+- (NSString *)getBodyString {
+    NSURL *imagePathUrl = [[NSBundle mainBundle] URLForResource:@"test" withExtension:@"png"];
+    
+    return [NSString stringWithFormat:@"<div class=\"bottom_text\" id=\"bottom_text\">hello world</div><div class=\"image_content\"><img id=\"justdoit_image\" src=\"%@\" alt=\"logo image\" /></div>", imagePathUrl];
+}
+
+/**
+ 本地网页数据拼接
+ 
+ @param filePath 网页路径
+ @param dictionary 拼接的参数
+ @return 拼接后网页路径字符串
+ */
+- (NSString *)componentFileUrlWithOriginFilePath:(NSString *)filePath Dictionary:(NSDictionary *)dictionary{
+    NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
+    // NO代表此路径没有下一级，等同于[NSURL fileURLWithPath:filePath];
+    // 如果设置为YES，则路径会自动添加一个“/”
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
+    NSMutableArray *mutArray = [NSMutableArray array];
+    for (NSString *key in dictionary.allKeys) {
+        NSURLQueryItem *item = [NSURLQueryItem queryItemWithName:key value:dictionary[key]];
+        [mutArray addObject:item];
+    }
+    [urlComponents setQueryItems:mutArray];
+    // urlComponents.URL  返回拼接后的(NSURL *)
+    // urlComponents.string 返回拼接后的(NSString *)
+    return urlComponents.string;
 }
 
 #pragma mark - UIWebViewDelegate
