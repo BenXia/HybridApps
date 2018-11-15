@@ -26,11 +26,11 @@
     _webView.delegate = self;
     
     // 1. 加载本地 html
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"local" ofType:@"html"];
 //    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]]];
     
     // 2. 加载本地 html
-//    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"index3" ofType:@"html"]];
+//    NSString *filePath = [NSString stringWithFormat:@"file://%@", [[NSBundle mainBundle] pathForResource:@"local" ofType:@"html"]];
 //    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:filePath]]];
     
     // 3. 加载本地 html
@@ -38,7 +38,7 @@
 //    [_webView loadRequest:[NSURLRequest requestWithURL:pathUrl]];
     
     // 4. 加载远程 html
-//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/index3.html"]]];
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.192/local.html"]]];
     
     // 5. 测试加载本地html、css、js、图片
 //    NSURL *baseUrl = [NSURL URLWithString:@"file:///"];
@@ -47,11 +47,11 @@
     // 6. 我这里是将html资源文件放置在工程内一个bundle的文件夹内
 //    NSString *path = [[[NSBundle mainBundle] pathForResource:@"LocalH5" ofType:@"bundle"] stringByAppendingPathComponent:@"index.html"];
 //    // 拼接后的网页路径
-//    NSString *urlString = [self componentFileUrlWithOriginFilePath:path Dictionary:@{@"key":@"value"}];
+//    NSString *urlString = [self componentFileUrlWithOriginFilePath:path dictionary:@{@"arg1Name":@"arg1Value"}];
 //    // 加载网页
 //    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
     
-    // 7. UIWebView加载沙盒内Html页面
+    // 7. UIWebView加载 main bundle 中 html、css、js、图片
 //    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
 //    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 //
@@ -60,14 +60,45 @@
 //                                                        error:nil];
 //    [_webView loadHTMLString:htmlString baseURL:bundleUrl];
     
-    // 8. UIWebView加载沙盒内Html页面
-    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
-    NSData *htmlData = [[NSData alloc] initWithContentsOfFile:htmlPath];
-    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    [_webView loadData:htmlData
-              MIMEType:@"text/html"
-      textEncodingName:@"UTF-8"
-               baseURL:bundleUrl];
+    // 8. UIWebView加载 main bundle 中 html、css、js、图片
+//    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//    NSData *htmlData = [[NSData alloc] initWithContentsOfFile:htmlPath];
+//    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+//    [_webView loadData:htmlData
+//              MIMEType:@"text/html"
+//      textEncodingName:@"UTF-8"
+//               baseURL:bundleUrl];
+    
+    // 9. UIWebView加载沙盒内 html、css、js、图片
+//    [self bundleToDocuments:@"index.html" existsCover:YES];
+//    [self bundleToDocuments:@"test.css" existsCover:YES];
+//    [self bundleToDocuments:@"test.js" existsCover:YES];
+//    [self bundleToDocuments:@"test.png" existsCover:YES];
+//    [self bundleToDocuments:@"test.jpg" existsCover:YES];
+//
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
+//    NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];
+//    NSString *htmlString = [NSString stringWithContentsOfFile:htmlPath
+//                                                     encoding:NSUTF8StringEncoding
+//                                                        error:nil];
+//    NSURL *baseUrl = [NSURL fileURLWithPath:documentsDirectory];
+//    [_webView loadHTMLString:htmlString baseURL:baseUrl];
+    
+    // 10. UIWebView加载沙盒内 html、css、js、图片（支持传参数）
+    [self bundleToDocuments:@"index.html" existsCover:YES];
+    [self bundleToDocuments:@"test.css" existsCover:YES];
+    [self bundleToDocuments:@"test.js" existsCover:YES];
+    [self bundleToDocuments:@"test.png" existsCover:YES];
+    [self bundleToDocuments:@"test.jpg" existsCover:YES];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
+    NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];
+    // 拼接后的网页路径
+    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"arg1Name":@"arg1Value"}];
+    // 加载网页
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
 - (NSString *)getHtmlString {
@@ -99,7 +130,7 @@
  @param dictionary 拼接的参数
  @return 拼接后网页路径字符串
  */
-- (NSString *)componentFileUrlWithOriginFilePath:(NSString *)filePath Dictionary:(NSDictionary *)dictionary{
+- (NSString *)componentFileUrlWithOriginFilePath:(NSString *)filePath dictionary:(NSDictionary *)dictionary{
     NSURL *url = [NSURL fileURLWithPath:filePath isDirectory:NO];
     // NO代表此路径没有下一级，等同于[NSURL fileURLWithPath:filePath];
     // 如果设置为YES，则路径会自动添加一个“/”
@@ -113,6 +144,31 @@
     // urlComponents.URL  返回拼接后的(NSURL *)
     // urlComponents.string 返回拼接后的(NSString *)
     return urlComponents.string;
+}
+
+// 把 mainBundle 中的文件拷贝到 Documents 目录下，并指定是否覆盖，YES 则覆盖
+- (void)bundleToDocuments:(NSString *)fileName existsCover:(BOOL)cover {
+    BOOL success;
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
+    NSString *targetPath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    if (!cover) {
+        success = [fileManager fileExistsAtPath:targetPath];
+        if (success) return;
+    } else {
+        [fileManager removeItemAtPath:targetPath error:&error];
+    }
+    //把 mainBundle 中的文件拷贝到 targetPath
+    NSString *bundlePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
+    //如果文件存在了则不能覆盖，所以前面才要先把它删除掉
+    success = [fileManager copyItemAtPath:bundlePath toPath:targetPath error:&error];
+    if (!success) {
+        NSLog(@"'%@' 文件从 app 包里拷贝到 Documents 目录，失败:%@", fileName, error);
+    } else {
+        NSLog(@"'%@' 文件从 app 包里已经成功拷贝到了 Documents 目录。", fileName);
+    }
 }
 
 #pragma mark - UIWebViewDelegate
