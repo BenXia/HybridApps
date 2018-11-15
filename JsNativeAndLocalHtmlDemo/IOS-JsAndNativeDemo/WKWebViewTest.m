@@ -9,6 +9,7 @@
 #import "WKWebViewTest.h"
 #import <WebKit/WebKit.h>
 #import "SVProgressHUD.h"
+#import "NSString+URL.h"
 
 @interface WKWebViewTest ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 
@@ -102,34 +103,34 @@
 //    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     
     // 下面的两种都不能用
-//    NSString *testPath = [htmlPath stringByAppendingPathComponent:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSString *testPath = [htmlPath stringByAppendingPathComponent:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]];
 //    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:testPath]);
-//    // /var/containers/Bundle/Application/8070B925-4CB7-44AE-8D8A-30D14F9EB070/IOS-JsAndNativeDemo.app/index.html/?sId=417492&a ... 0.1:8888
+//    // /Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Ap ... bc%3Ddef
 //    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath]);
-//    // file:///var/containers/Bundle/Application/8070B925-4CB7-44AE-8D8A-30D14F9EB070/IOS-JsAndNativeDemo.app/index.html/%3FsId=417492&apiUrl=http:/192.168.100.1:8888
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:testPath]]];
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/16D93DA8-E8D5-48B2-839D-094C007F68FE/IOS-JsAndNativeDemo.app/index.html/%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
+////    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:testPath]]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath]]];
     
     // 不能用
-//    NSString *testPath2 = [htmlPath stringByAppendingString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSString *testPath2 = [htmlPath stringByAppendingString:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]];
 //    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath2]);
-//    // file:///var/containers/Bundle/Application/DCB4F9F3-EFF3-41EA-A7DA-6F78F198A2CB/IOS-JsAndNativeDemo.app/index.html%3FsId=417492&apiUrl=http://192.168.100.1:8888
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/E9B169DF-0FCF-4DFE-AB8B-721734E64C9E/IOS-JsAndNativeDemo.app/index.html%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath2]]];
     
     // 能用
-//    NSString *filePath = [htmlPath stringByAppendingString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"];
+//    NSString *filePath = [htmlPath stringByAppendingString:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]];
 //    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]]);
-//    // file:///var/containers/Bundle/Application/0FE76B0D-4203-41F5-B3BD-0273D32D780A/IOS-JsAndNativeDemo.app/index.html?sId=417492&apiUrl=http://192.168.100.1:8888
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/FE0390B8-8C0B-49D2-817E-3B407B0EBC5E/IOS-JsAndNativeDemo.app/index.html?sId=417492&apiUrl=http%3A%2F%2F192.168.100.1%3A8888%3Fabc%3Ddef
 //    NSURL *fileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:fileUrl]];
     
     // 能用
-//    NSURL *fileUrl = [NSURL URLWithString:@"?sId=417492&apiUrl=http://192.168.100.1:8888"
+//    NSURL *fileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]
 //                            relativeToURL:[NSURL fileURLWithPath:htmlPath]];   // 注意该处换成 [NSURL URLWithString: htmlPath] 就不能正常使用了
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:fileUrl]];
     
     // 能用
-//    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":@"http://192.168.100.1:8888"}];
+//    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":[@"http://192.168.100.1:8888?abc=def" URLEncodedString]}];
 //    [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:bundleUrl];
     
     // 9. WKWebView加载沙盒内 html、css、js、图片（支持传参数）
@@ -143,7 +144,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
     NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];
     NSURL *baseUrl = [NSURL fileURLWithPath:documentsDirectory];
-    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"arg1Name":@"arg1Value"}];
+    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":[@"http://192.168.100.1:8888?abc=def" URLEncodedString]}];
     [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:baseUrl];
     
     [self.view addSubview:self.webView];

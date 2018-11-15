@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "TestActionProxy.h"
+#import "NSString+URL.h"
 
 @interface WebViewTest ()<UIWebViewDelegate>
 
@@ -96,7 +97,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
     NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];
     // 拼接后的网页路径
-    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"arg1Name":@"arg1Value"}];
+    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":[@"http://192.168.100.1:8888?abc=def" URLEncodedString]}];
     // 加载网页
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
