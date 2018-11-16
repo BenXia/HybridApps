@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) WKWebView *webView;
 
-
 @end
 
 @implementation TestWKWebViewVC
