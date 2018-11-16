@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TestUIWebViewVC.h
 //  JsNativeAndLocalHtmlDemo
 //
 //  Created by Ben on 18/11/1.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TestUIWebViewVC : UIViewController
 
 @end
+
 

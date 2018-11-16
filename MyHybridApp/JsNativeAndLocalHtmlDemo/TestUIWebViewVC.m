@@ -1,24 +1,24 @@
 //
-//  WebViewTest.m
-//  IOS-JsAndNativeDemo
+//  TestUIWebViewVC.m
+//  JsNativeAndLocalHtmlDemo
 //
-//  Created by zhangPeng on 16/8/26.
-//  Copyright © 2016年 ZhangPeng. All rights reserved.
+//  Created by Ben on 18/11/1.
+//  Copyright © 2018年 Ben. All rights reserved.
 //
 
-#import "WebViewTest.h"
+#import "TestUIWebViewVC.h"
 #import <WebKit/WebKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "TestActionProxy.h"
 #import "NSString+URL.h"
 
-@interface WebViewTest ()<UIWebViewDelegate>
+@interface TestUIWebViewVC ()<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
-@implementation WebViewTest
+@implementation TestUIWebViewVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +92,7 @@
     [self bundleToDocuments:@"test.js" existsCover:YES];
     [self bundleToDocuments:@"test.png" existsCover:YES];
     [self bundleToDocuments:@"test.jpg" existsCover:YES];
-    
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; //找到 Documents 目录
     NSString *htmlPath = [documentsDirectory stringByAppendingPathComponent:@"index.html"];

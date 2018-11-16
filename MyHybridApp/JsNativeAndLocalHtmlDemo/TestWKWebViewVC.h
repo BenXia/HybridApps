@@ -1,6 +1,6 @@
 //
-//  ViewController.h
-//  JsNativeAndLocalHtmlDemo
+//  TestWKWebViewVC.h
+//  WKWebView
 //
 //  Created by Ben on 18/11/1.
 //  Copyright © 2018年 Ben. All rights reserved.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TestWKWebViewVC : UIViewController
 
 @end
+
 

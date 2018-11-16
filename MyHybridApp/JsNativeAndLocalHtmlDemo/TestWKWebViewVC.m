@@ -1,24 +1,24 @@
 //
-//  WKWebViewTest.m
+//  TestWKWebViewVC.m
 //  WKWebView
 //
-//  Created by zhangPeng on 16/8/26.
-//  Copyright © 2016年 ZhangPeng. All rights reserved.
+//  Created by Ben on 18/11/1.
+//  Copyright © 2018年 Ben. All rights reserved.
 //
 
-#import "WKWebViewTest.h"
+#import "TestWKWebViewVC.h"
 #import <WebKit/WebKit.h>
 #import "SVProgressHUD.h"
 #import "NSString+URL.h"
 
-@interface WKWebViewTest ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
+@interface TestWKWebViewVC ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
 
 @property (nonatomic, strong) WKWebView *webView;
 
 
 @end
 
-@implementation WKWebViewTest
+@implementation TestWKWebViewVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,20 +107,20 @@
 //    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:testPath]);
 //    // /Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Ap ... bc%3Ddef
 //    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath]);
-//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/16D93DA8-E8D5-48B2-839D-094C007F68FE/IOS-JsAndNativeDemo.app/index.html/%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/16D93DA8-E8D5-48B2-839D-094C007F68FE/JsNativeAndLocalHtmlDemo.app/index.html/%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
 ////    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:testPath]]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath]]];
     
     // 不能用
 //    NSString *testPath2 = [htmlPath stringByAppendingString:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]];
 //    NSLog (@"NSURL fileURLWithPath:\n %@", [NSURL fileURLWithPath:testPath2]);
-//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/E9B169DF-0FCF-4DFE-AB8B-721734E64C9E/IOS-JsAndNativeDemo.app/index.html%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/E9B169DF-0FCF-4DFE-AB8B-721734E64C9E/JsNativeAndLocalHtmlDemo.app/index.html%3FsId=417492&apiUrl=http%253A%252F%252F192.168.100.1%253A8888%253Fabc%253Ddef
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath2]]];
     
     // 能用
 //    NSString *filePath = [htmlPath stringByAppendingString:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http://192.168.100.1:8888?abc=def" URLEncodedString]]];
 //    NSLog (@"NSURL URLWithString:\n %@", [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]]);
-//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/FE0390B8-8C0B-49D2-817E-3B407B0EBC5E/IOS-JsAndNativeDemo.app/index.html?sId=417492&apiUrl=http%3A%2F%2F192.168.100.1%3A8888%3Fabc%3Ddef
+//    // file:///Users/xiaxuqiang/Library/Developer/CoreSimulator/Devices/17CD3688-56DF-4E82-B8D5-FAABB0AA646E/data/Containers/Bundle/Application/FE0390B8-8C0B-49D2-817E-3B407B0EBC5E/JsNativeAndLocalHtmlDemo.app/index.html?sId=417492&apiUrl=http%3A%2F%2F192.168.100.1%3A8888%3Fabc%3Ddef
 //    NSURL *fileUrl = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", filePath]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:fileUrl]];
     

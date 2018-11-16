@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  IOS-JsAndNativeDemo
+//  JsNativeAndLocalHtmlDemo
 //
-//  Created by zhangPeng on 16/8/17.
-//  Copyright © 2016年 ZhangPeng. All rights reserved.
+//  Created by Ben on 18/11/1.
+//  Copyright © 2018年 Ben. All rights reserved.
 //
 
 #import "AppDelegate.h"

@@ -1,14 +1,14 @@
 //
 //  ViewController.m
-//  IOS-JsAndNativeDemo
+//  JsNativeAndLocalHtmlDemo
 //
-//  Created by zhangPeng on 16/8/17.
-//  Copyright © 2016年 ZhangPeng. All rights reserved.
+//  Created by Ben on 18/11/1.
+//  Copyright © 2018年 Ben. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "WebViewTest.h"
-#import "WKWebViewTest.h"
+#import "TestUIWebViewVC.h"
+#import "TestWKWebViewVC.h"
 
 @interface ViewController ()
 
@@ -21,15 +21,13 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-//webview与js交互界面
-- (IBAction)webViewBtnClick:(UIButton *)sender {
-    WebViewTest *webTest = [[WebViewTest alloc]init];
+- (IBAction)uiWebViewBtnClick:(UIButton *)sender {
+    TestUIWebViewVC *webTest = [[TestUIWebViewVC alloc] init];
     [self.navigationController pushViewController:webTest animated:YES];
 }
 
-//wkwebview与js交互界面
 - (IBAction)wkWebViewBtnClick:(UIButton *)sender {
-    WKWebViewTest *wkWebTest = [[WKWebViewTest alloc]init];
+    TestWKWebViewVC *wkWebTest = [[TestWKWebViewVC alloc] init];
     [self.navigationController pushViewController:wkWebTest animated:YES];
 }
 

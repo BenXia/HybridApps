@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		332CC35D219DC47000813FC4 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 332CC35C219DC47000813FC4 /* NSString+URL.m */; };
 		3367F05F219F243700B7E6CE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3367F05E219F243700B7E6CE /* JavaScriptCore.framework */; };
-		6E0EE3B01D70315600EB7DEB /* WKWebViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3AF1D70315600EB7DEB /* WKWebViewTest.m */; };
-		6E0EE3B41D70319500EB7DEB /* WebViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3B21D70319500EB7DEB /* WebViewTest.m */; };
-		6E0EE3B51D70319500EB7DEB /* WebViewTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0EE3B31D70319500EB7DEB /* WebViewTest.xib */; };
+		3367F09F219F2DFD00B7E6CE /* TestUIWebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3367F09E219F2DFD00B7E6CE /* TestUIWebViewVC.xib */; };
+		6E0EE3B01D70315600EB7DEB /* TestWKWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3AF1D70315600EB7DEB /* TestWKWebViewVC.m */; };
+		6E0EE3B41D70319500EB7DEB /* TestUIWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0EE3B21D70319500EB7DEB /* TestUIWebViewVC.m */; };
 		6E1E68E41D6ACBA6007C93AB /* TestActionProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E68E31D6ACBA6007C93AB /* TestActionProxy.m */; };
 		6E1E68EE1D6AE463007C93AB /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E68E81D6AE463007C93AB /* SVIndefiniteAnimatedView.m */; };
 		6E1E68EF1D6AE463007C93AB /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E68E91D6AE463007C93AB /* SVProgressHUD.bundle */; };
@@ -36,11 +36,11 @@
 		332CC35B219DC47000813FC4 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
 		332CC35C219DC47000813FC4 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		3367F05E219F243700B7E6CE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		6E0EE3AE1D70315600EB7DEB /* WKWebViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewTest.h; sourceTree = "<group>"; };
-		6E0EE3AF1D70315600EB7DEB /* WKWebViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewTest.m; sourceTree = "<group>"; };
-		6E0EE3B11D70319500EB7DEB /* WebViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewTest.h; sourceTree = "<group>"; };
-		6E0EE3B21D70319500EB7DEB /* WebViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewTest.m; sourceTree = "<group>"; };
-		6E0EE3B31D70319500EB7DEB /* WebViewTest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewTest.xib; sourceTree = "<group>"; };
+		3367F09E219F2DFD00B7E6CE /* TestUIWebViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestUIWebViewVC.xib; sourceTree = "<group>"; };
+		6E0EE3AE1D70315600EB7DEB /* TestWKWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWKWebViewVC.h; sourceTree = "<group>"; };
+		6E0EE3AF1D70315600EB7DEB /* TestWKWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWKWebViewVC.m; sourceTree = "<group>"; };
+		6E0EE3B11D70319500EB7DEB /* TestUIWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUIWebViewVC.h; sourceTree = "<group>"; };
+		6E0EE3B21D70319500EB7DEB /* TestUIWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUIWebViewVC.m; sourceTree = "<group>"; };
 		6E1E68E31D6ACBA6007C93AB /* TestActionProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestActionProxy.m; sourceTree = "<group>"; };
 		6E1E68E51D6ACC6C007C93AB /* TestActionProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestActionProxy.h; sourceTree = "<group>"; };
 		6E1E68E71D6AE463007C93AB /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -98,23 +98,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6E0EE3B61D70323500EB7DEB /* WebView */ = {
+		6E0EE3B61D70323500EB7DEB /* UIWebView */ = {
 			isa = PBXGroup;
 			children = (
 				6E1E68E51D6ACC6C007C93AB /* TestActionProxy.h */,
 				6E1E68E31D6ACBA6007C93AB /* TestActionProxy.m */,
-				6E0EE3B11D70319500EB7DEB /* WebViewTest.h */,
-				6E0EE3B21D70319500EB7DEB /* WebViewTest.m */,
-				6E0EE3B31D70319500EB7DEB /* WebViewTest.xib */,
+				6E0EE3B11D70319500EB7DEB /* TestUIWebViewVC.h */,
+				6E0EE3B21D70319500EB7DEB /* TestUIWebViewVC.m */,
+				3367F09E219F2DFD00B7E6CE /* TestUIWebViewVC.xib */,
 			);
-			name = WebView;
+			name = UIWebView;
 			sourceTree = "<group>";
 		};
 		6E0EE3B71D70324900EB7DEB /* WKWebView */ = {
 			isa = PBXGroup;
 			children = (
-				6E0EE3AE1D70315600EB7DEB /* WKWebViewTest.h */,
-				6E0EE3AF1D70315600EB7DEB /* WKWebViewTest.m */,
+				6E0EE3AE1D70315600EB7DEB /* TestWKWebViewVC.h */,
+				6E0EE3AF1D70315600EB7DEB /* TestWKWebViewVC.m */,
 			);
 			name = WKWebView;
 			sourceTree = "<group>";
@@ -157,7 +157,7 @@
 				6E4B5C601D643D3B006FD478 /* AppDelegate.m */,
 				6E4B5C621D643D3B006FD478 /* ViewController.h */,
 				6E4B5C631D643D3B006FD478 /* ViewController.m */,
-				6E0EE3B61D70323500EB7DEB /* WebView */,
+				6E0EE3B61D70323500EB7DEB /* UIWebView */,
 				6E0EE3B71D70324900EB7DEB /* WKWebView */,
 				332CC35A219DC47000813FC4 /* Categories */,
 				6E1E68E61D6AE462007C93AB /* SVProgressHUD */,
@@ -261,11 +261,11 @@
 			files = (
 				B5CEE45E219D98A3006F6462 /* test.js in Resources */,
 				6E1E68EF1D6AE463007C93AB /* SVProgressHUD.bundle in Resources */,
-				6E0EE3B51D70319500EB7DEB /* WebViewTest.xib in Resources */,
 				B5CEE45C219D98A3006F6462 /* index.html in Resources */,
 				B5CEE463219D98A9006F6462 /* local.html in Resources */,
 				6E4B5C6C1D643D3B006FD478 /* LaunchScreen.storyboard in Resources */,
 				B5CEE460219D98A3006F6462 /* test.jpg in Resources */,
+				3367F09F219F2DFD00B7E6CE /* TestUIWebViewVC.xib in Resources */,
 				6E4B5C691D643D3B006FD478 /* Assets.xcassets in Resources */,
 				B5CEE45F219D98A3006F6462 /* test.png in Resources */,
 				B5CEE45D219D98A3006F6462 /* test.css in Resources */,
@@ -284,11 +284,11 @@
 				6E1E68F11D6AE463007C93AB /* SVRadialGradientLayer.m in Sources */,
 				6E1E68EE1D6AE463007C93AB /* SVIndefiniteAnimatedView.m in Sources */,
 				6E4B5C641D643D3B006FD478 /* ViewController.m in Sources */,
-				6E0EE3B41D70319500EB7DEB /* WebViewTest.m in Sources */,
+				6E0EE3B41D70319500EB7DEB /* TestUIWebViewVC.m in Sources */,
 				6E1E68E41D6ACBA6007C93AB /* TestActionProxy.m in Sources */,
 				332CC35D219DC47000813FC4 /* NSString+URL.m in Sources */,
 				6E4B5C611D643D3B006FD478 /* AppDelegate.m in Sources */,
-				6E0EE3B01D70315600EB7DEB /* WKWebViewTest.m in Sources */,
+				6E0EE3B01D70315600EB7DEB /* TestWKWebViewVC.m in Sources */,
 				6E4B5C5E1D643D3B006FD478 /* main.m in Sources */,
 				6E1E68F01D6AE463007C93AB /* SVProgressHUD.m in Sources */,
 			);
