@@ -133,7 +133,37 @@
 //    NSString *urlString = [self componentFileUrlWithOriginFilePath:htmlPath dictionary:@{@"sId":@"417492", @"apiUrl":[@"http://192.168.100.1:8888?abc=def" URLEncodedString]}];
 //    [self.webView loadFileURL:[NSURL URLWithString:urlString] allowingReadAccessToURL:bundleUrl];
     
-    // 9. WKWebView加载沙盒内 html、css、js、图片（支持传参数）
+//    NSURL *url = [NSURL URLWithString:[testPath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+//    NSURL *fileUrl = [NSURL fileURLWithPath:[testPath stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:testPath]]];
+    
+    // 9. URL 编码 API 的研究
+//    NSString *htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//    // (1). API : stringByAddingPercentEncodingWithAllowedCharacters
+//    NSString *urlArgPath = [@"http:#<>[|+ //192.168.100.1:8888?abc=def" stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+//    // URLUserAllowedCharacterSet      除掉 "#%/:<>?@[\]^`
+//    // URLPasswordAllowedCharacterSet  除掉 "#%/:<>?@[\]^`{|}
+//    // URLHostAllowedCharacterSet      除掉 "#%/<>?@\^`{|}
+//    // URLPathAllowedCharacterSet      除掉 "#%;<>?[\]^`{|}
+//    // URLQueryAllowedCharacterSet     除掉 "#%<>[\]^`{|}
+//    // URLFragmentAllowedCharacterSet  除掉 "#%<>[\]^`{|}
+//    NSString *testPath = [htmlPath stringByAppendingFormat:@"?sId=417492&apiUrl=%@", urlArgPath];
+//    NSString *testPathBefore = [testPath stringByRemovingPercentEncoding];
+//    NSLog (@"testPath:\n%@", testPath);
+//    NSLog (@"testPathBefore:\n%@", testPathBefore);
+//    // (2). API : CFURLCreateStringByAddingPercentEscapes
+//    NSString *testPath2 = [htmlPath stringByAppendingPathComponent:[NSString stringWithFormat:@"?sId=417492&apiUrl=%@", [@"http:#<>\|+ //192.168.100.1:8888?abc=def" URLEncodedString]]];
+//    // 如下字符会被转义  "!*'();:@&=+$,/?%#[]"   (RFC3986 中指定了以下字符为保留字符：　"! * ' ( ) ; : @ & =+ $ , / ? # [ ]"，另外 % 是转义字符，所以一共 19 个字符）
+//    NSLog (@"testPath2:\n%@", testPath2);
+//    // (3). 了解一下 JS 中的 escape             会对 "!'();:&=$,?%#[]" 字符进行转义（不包括 "*@+/")，unescape 也只对这个字符集做解码
+//    //      了解一下 JS 中的 encodeURI          会对 "%[]" 字符进行转义，decodeURI 也只对这个字符集做解码
+//    //      了解一下 JS 中的 encodeURIComponent 会对 ";:@&=+$,/?%#[]" 字符进行转义（不包括 "!*'()")，decodeURIComponent 也只对这个字符集做解码
+//    //
+//    //      escape （安全字符 69 个， ECMAScript v3 反对使用该方法，应用使用 decodeURI() 和 decodeURIComponent() 替代它） */@+-._0-9a-zA-Z
+//    //      encodeURI （安全字符 82 个，被用作对一个完整的 URI 进行编码） !#$&'()*+,/:;=?@-._~0-9a-zA-Z
+//    //      encodeURIComponent （安全字符 71 个，被用作对 URI 的一个组件进行编码） !'()*-._~0-9a-zA-Z   ( 注意+ 号未在其安全字符里)
+    
+    // 10. WKWebView加载沙盒内 html、css、js、图片（支持传参数）
     [self bundleToDocuments:@"index.html" existsCover:YES];
     [self bundleToDocuments:@"test.css" existsCover:YES];
     [self bundleToDocuments:@"test.js" existsCover:YES];
