@@ -1,45 +1,72 @@
 <html>
-	<head>
-		<title>index_legend2</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" charset="utf-8">
-		<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
-				$("#getVersion").click(function(){
-					var appVersion = Zhujiayi.getVersion();
-					console.log(appVersion);
-					alert(appVersion);
-				});
+<head>
+  <title>index_legend2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" charset="utf-8">
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#getVersion").click(function () {
+        if (window.BenJSExternal) {
+          var appVersion = BenJSExternal.getVersion();
+          console.log(appVersion);
+          alert(appVersion);
+        } else {
+          var message = {
+            func: "getVersion"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
 
-				$("#getSum").click(function(){
-					var sum = Zhujiayi.getSum(1, 2, 93);
-					console.log(sum);
-					alert(sum);
-				});
+      $("#getSum").click(function () {
+        if (window.BenJSExternal) {
+          var sum = BenJSExternal.getSum(1, 2, 93);
+          console.log(sum);
+          alert(sum);
+        } else {
+          var message = {
+            func: "getSum",
+            args: [ 1, 2, 93 ]
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
 
-				$("#showNotice").click(function(){
-					Zhujiayi.showNotice("this is a test!!!");
-				});
-              
-			});
-		</script>
-	</head>
-    <body>
-        <br/>
-        <br/>
-		<a href="###" id="getVersion">getVersion</a>
-        <br/>
-		<a href="###" id="getSum">getSum</a>
-        <br/>
-		<a href="###" id="showNotice">showNotice</a>
-        <br/>
-        <!-- <div class="bottom_text">测试文字</div> -->
-	</body>
-    
+      $("#showNotice").click(function () {
+        if (window.BenJSExternal) {
+          BenJSExternal.showNotice("this is a test!!!");
+        } else {
+          var message = {
+            func: "showNotice",
+            message: "hello world"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message);
+        }
+      });
+    });
+    window.callbackInWKWebView = (funcName, result) => {
+      alert(funcName + " return " + result);
+      return "callback finish";
+    }
+  </script>
+</head>
+
+<body>
+  <br />
+  <a href="###" id="getVersion">getVersion</a>
+  <br />
+  <a href="###" id="getSum">getSum</a>
+  <br />
+  <a href="###" id="showNotice">showNotice</a>
+  <br />
+  <!-- <div class="bottom_text">测试文字</div> -->
+</body>
+
 <!--    <style>-->
 <!--        .bottom_text {-->
 <!--            color: red;-->
 <!--            font-size: 3rem;-->
 <!--        }-->
 <!--    </style>-->
+
 </html>

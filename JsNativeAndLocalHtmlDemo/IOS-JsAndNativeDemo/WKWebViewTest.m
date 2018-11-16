@@ -43,7 +43,7 @@
     
     WKUserContentController *userController = [[WKUserContentController alloc] init];
     /*! 需要先注册一下这个JS的方法名称。 否则无法响应，  同时实现WKScriptMessageHandler代理
-     window.webkit.messageHandlers.OOXX.postMessage()  //对应的方法
+        window.webkit.messageHandlers.<name>.postMessage(<messageBody>)  //对应的JS中调用方式
      */
     config.userContentController = userController;
     
@@ -51,9 +51,9 @@
     config.allowsInlineMediaPlayback = YES;   //是否支持在线录像播放
 
     // 通过JS与webview内容交互
-    // 注入JS对象名称Zhujiayi，当JS通过Zhujiayi来调用时，
+    // 注入JS对象名称BenJSExternal，当JS通过BenJSExternal来调用时，
     // 我们可以在WKScriptMessageHandler代理中接收到
-    [config.userContentController addScriptMessageHandler:self name:@"Zhujiayi"];
+    [config.userContentController addScriptMessageHandler:self name:@"BenJSExternal"];
     
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds
                                       configuration:config];
@@ -266,10 +266,10 @@
     // 页面加载完成之后调用
     NSLog(@"页面加载完成    %s",__func__);
     
-    //native执行一行js代码
-    [self.webView evaluateJavaScript:@"alert('调用js的弹框')" completionHandler:^(id _Nullable value, NSError* _Nullable error) {
-        NSLog(@"%@", value);
-    }];
+//    //native执行一行js代码
+//    [self.webView evaluateJavaScript:@"alert('调用js的弹框')" completionHandler:^(id _Nullable value, NSError* _Nullable error) {
+//        NSLog(@"%@", value);
+//    }];
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation {
@@ -309,13 +309,10 @@
     
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         completionHandler();
-        NSLog(@"输出Alert 点击");
     }];
     [alertController addAction:action];
     
     [self presentViewController:alertController animated:YES completion:nil];
-    
-    NSLog(@"%@", message);
 }
 
 //4.弹出一个输入框（与JS交互的）
@@ -331,7 +328,6 @@
         
         _textfield = textField;
     }];
-    
     
     // add confirm item
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -384,39 +380,50 @@
 #pragma mark- WKScriptMessageHandler
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    if ([message.name isEqualToString:@"Zhujiayi"]) {
+    if ([message.name isEqualToString:@"BenJSExternal"]) {
         // 打印所传过来的参数，只支持NSNumber, NSString, NSDate, NSArray,
-        // NSDictionary, and NSNull类型
-        NSLog(@"%@", message.body);
-        
         NSDictionary *dataMsgDic = message.body;
         
-        if ([dataMsgDic[@"hhh"] isEqualToString:@"hhhh"]) {
-            NSLog(@"回调");
-            //            dispatch_async(dispatch_get_main_queue(), ^{
-            //
-            //                [SVProgressHUD showInfoWithStatus:@"完成加载"];
-            //
-            //            });
-            
-            
+        NSString *funcName = dataMsgDic[@"func"];
+        
+        if ([funcName isEqualToString:@"getVersion"]) {
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            // app版本
             NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-            
-            /**
-             *  @"iosCallback('%@')"  这个就是js的方法
-             *  evaluateJavaScript: 这个方法就是回调js的方法
-             *  value  就是js是否收到我们的回调，给我们的返回值
-             *  error 回调失败返回的原因
-             *
-             */
-            NSString *script = [NSString stringWithFormat:@"iosCallback('%@')", app_Version];
-            
-            
-            [self.webView evaluateJavaScript:script completionHandler:^(id _Nullable value, NSError* _Nullable error) {
+            NSString *script = [NSString stringWithFormat:@"callbackInWKWebView('%@', '%@')", funcName, app_Version];
+
+            [self.webView evaluateJavaScript:script completionHandler:^(id value, NSError* _Nullable error) {
                 NSLog(@"%@", value);
             }];
+        } else if ([funcName isEqualToString:@"getSum"]) {
+            NSArray <NSNumber *> *valuesArray = dataMsgDic[@"args"];
+            CGFloat sum = 0;
+            for (int i = 0; i < valuesArray.count; i++) {
+                NSNumber *value = valuesArray[i];
+                sum += [value floatValue];
+            }
+            
+            NSString *script = [NSString stringWithFormat:@"callbackInWKWebView('%@', '%f')", funcName, sum];
+            
+            [self.webView evaluateJavaScript:script completionHandler:^(id value, NSError* _Nullable error) {
+                NSLog(@"%@", value);
+            }];
+        } else if ([funcName isEqualToString:@"showNotice"]) {
+            NSString *message = dataMsgDic[@"message"];
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                                     message:message
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                NSString *script = [NSString stringWithFormat:@"callbackInWKWebView('%@', 'success')", funcName];
+                
+                [self.webView evaluateJavaScript:script completionHandler:^(id value, NSError* _Nullable error) {
+                    NSLog(@"%@", value);
+                }];
+            }];
+            [alertController addAction:action];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         }
     }
 }

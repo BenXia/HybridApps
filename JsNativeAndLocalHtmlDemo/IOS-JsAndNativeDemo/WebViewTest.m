@@ -225,11 +225,11 @@
      */
     
     
-    //js是通过对象调用的，我们js里面有一个对象 Zhujiayi 在调用方法
+    //js是通过对象调用的，我们js里面有一个对象 BenJSExternal 在调用方法
     //首先创建我们新建类的对象，将他赋值给js的对象
     
     TestActionProxy * actionProxy = [[TestActionProxy alloc]init];
-    context[@"Zhujiayi"] = actionProxy;
+    context[@"BenJSExternal"] = actionProxy;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
