@@ -50,7 +50,7 @@
 		6E1E68EB1D6AE463007C93AB /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		6E1E68EC1D6AE463007C93AB /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		6E1E68ED1D6AE463007C93AB /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		6E4B5C591D643D3B006FD478 /* IOS-JsAndNativeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS-JsAndNativeDemo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4B5C591D643D3B006FD478 /* JsNativeAndLocalHtmlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JsNativeAndLocalHtmlDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4B5C5D1D643D3B006FD478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E4B5C5F1D643D3B006FD478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6E4B5C601D643D3B006FD478 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		6E4B5C501D643D3B006FD478 = {
 			isa = PBXGroup;
 			children = (
-				6E4B5C5B1D643D3B006FD478 /* IOS-JsAndNativeDemo */,
+				6E4B5C5B1D643D3B006FD478 /* JsNativeAndLocalHtmlDemo */,
 				6E4B5C5A1D643D3B006FD478 /* Products */,
 				3367F05C219F241D00B7E6CE /* Frameworks */,
 			);
@@ -145,31 +145,31 @@
 		6E4B5C5A1D643D3B006FD478 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6E4B5C591D643D3B006FD478 /* IOS-JsAndNativeDemo.app */,
+				6E4B5C591D643D3B006FD478 /* JsNativeAndLocalHtmlDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6E4B5C5B1D643D3B006FD478 /* IOS-JsAndNativeDemo */ = {
+		6E4B5C5B1D643D3B006FD478 /* JsNativeAndLocalHtmlDemo */ = {
 			isa = PBXGroup;
 			children = (
 				6E4B5C5F1D643D3B006FD478 /* AppDelegate.h */,
 				6E4B5C601D643D3B006FD478 /* AppDelegate.m */,
 				6E4B5C621D643D3B006FD478 /* ViewController.h */,
 				6E4B5C631D643D3B006FD478 /* ViewController.m */,
-				6E4B5C651D643D3B006FD478 /* Main.storyboard */,
 				6E0EE3B61D70323500EB7DEB /* WebView */,
 				6E0EE3B71D70324900EB7DEB /* WKWebView */,
 				332CC35A219DC47000813FC4 /* Categories */,
 				6E1E68E61D6AE462007C93AB /* SVProgressHUD */,
 				B5CEE461219D98A9006F6462 /* 本地html测试JS交互 */,
 				B5CEE456219D98A2006F6462 /* 本地html测试加载 */,
+				6E4B5C5C1D643D3B006FD478 /* Supporting Files */,
+				6E4B5C651D643D3B006FD478 /* Main.storyboard */,
 				6E4B5C681D643D3B006FD478 /* Assets.xcassets */,
 				6E4B5C6A1D643D3B006FD478 /* LaunchScreen.storyboard */,
 				6E4B5C6D1D643D3B006FD478 /* Info.plist */,
-				6E4B5C5C1D643D3B006FD478 /* Supporting Files */,
 			);
-			path = "IOS-JsAndNativeDemo";
+			path = JsNativeAndLocalHtmlDemo;
 			sourceTree = "<group>";
 		};
 		6E4B5C5C1D643D3B006FD478 /* Supporting Files */ = {
@@ -204,9 +204,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6E4B5C581D643D3B006FD478 /* IOS-JsAndNativeDemo */ = {
+		6E4B5C581D643D3B006FD478 /* JsNativeAndLocalHtmlDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E4B5C7B1D643D3C006FD478 /* Build configuration list for PBXNativeTarget "IOS-JsAndNativeDemo" */;
+			buildConfigurationList = 6E4B5C7B1D643D3C006FD478 /* Build configuration list for PBXNativeTarget "JsNativeAndLocalHtmlDemo" */;
 			buildPhases = (
 				6E4B5C551D643D3B006FD478 /* Sources */,
 				6E4B5C561D643D3B006FD478 /* Frameworks */,
@@ -216,9 +216,9 @@
 			);
 			dependencies = (
 			);
-			name = "IOS-JsAndNativeDemo";
+			name = JsNativeAndLocalHtmlDemo;
 			productName = "IOS-JsAndNativeDemo";
-			productReference = 6E4B5C591D643D3B006FD478 /* IOS-JsAndNativeDemo.app */;
+			productReference = 6E4B5C591D643D3B006FD478 /* JsNativeAndLocalHtmlDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -236,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6E4B5C541D643D3B006FD478 /* Build configuration list for PBXProject "IOS-JsAndNativeDemo" */;
+			buildConfigurationList = 6E4B5C541D643D3B006FD478 /* Build configuration list for PBXProject "JsNativeAndLocalHtmlDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -249,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E4B5C581D643D3B006FD478 /* IOS-JsAndNativeDemo */,
+				6E4B5C581D643D3B006FD478 /* JsNativeAndLocalHtmlDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -425,10 +425,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ben Xia (2Z5CGGJ246)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "IOS-JsAndNativeDemo/Info.plist";
+				INFOPLIST_FILE = JsNativeAndLocalHtmlDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qq.IOS-JsAndNativeDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qq.JsNativeAndLocalHtmlDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = DeveloperWildcardProfile;
 			};
@@ -441,10 +441,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ben Xia (2Z5CGGJ246)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "IOS-JsAndNativeDemo/Info.plist";
+				INFOPLIST_FILE = JsNativeAndLocalHtmlDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qq.IOS-JsAndNativeDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qq.JsNativeAndLocalHtmlDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = DeveloperWildcardProfile;
 			};
@@ -453,7 +453,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E4B5C541D643D3B006FD478 /* Build configuration list for PBXProject "IOS-JsAndNativeDemo" */ = {
+		6E4B5C541D643D3B006FD478 /* Build configuration list for PBXProject "JsNativeAndLocalHtmlDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E4B5C791D643D3C006FD478 /* Debug */,
@@ -462,7 +462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E4B5C7B1D643D3C006FD478 /* Build configuration list for PBXNativeTarget "IOS-JsAndNativeDemo" */ = {
+		6E4B5C7B1D643D3C006FD478 /* Build configuration list for PBXNativeTarget "JsNativeAndLocalHtmlDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6E4B5C7C1D643D3C006FD478 /* Debug */,
