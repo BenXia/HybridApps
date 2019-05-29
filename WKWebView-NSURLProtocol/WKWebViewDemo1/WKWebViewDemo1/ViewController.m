@@ -32,7 +32,9 @@
 
 - (void)buttonClicked{
     WWBaseWKWebViewController *webVC = [WWBaseWKWebViewController new];
-    webVC.urlStr = @"https://www.baidu.com";
+    //webVC.urlStr = @"https://www.baidu.com";
+    // 注意：在safari浏览器中发现一个bug，即用户选择本地的图片文件时，如果使用了crossorigin话也会报错，解决办法是判断图片的地址是否是以http开头的
+    webVC.urlStr = @"https://apph5-tst.changingedu.com/apph5/student/ta_assistant#/assistant";
     
     //webVC.urlStr = @"http:192.168.1.34/webTest/app.html";
     //WWBaseWebViewController *webVC = [WWBaseWebViewController new];
