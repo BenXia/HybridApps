@@ -25,6 +25,27 @@
         }
     
     }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self evaluateJavaScript:@"\
+                console.log(\"start executing javascript 1\");\
+                var start = new Date().getTime();\
+                //  console.log('休眠前：' + start);\
+                while (true) {\
+                    if (new Date().getTime() - start > 1000) {\
+                        break;\
+                    }\
+                }\
+                console.log(\"end executing javascript 1\");\
+         " completionHandler:^(id result, NSError * error) {
+            NSLog (@"done evaluate first javascript");
+        }];
+        [self evaluateJavaScript:@"console.log(\"executing javascript 2\");" completionHandler:^(id result, NSError * error) {
+            NSLog (@"done evaluate second javascript");
+        }];
+    });
+    
+    
     return self;
 }
 - (void)showConsole {
