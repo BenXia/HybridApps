@@ -1,0 +1,94 @@
+<html>
+
+<head>
+  <title>index_legend2</title>
+  <!-- 14Pro 393@3x 屏幕测试 -->
+  <meta name="viewport" content="width=200" />
+<!--  <meta name="viewport" content="width=393" />-->
+<!--  <meta name="viewport" content="width=390" />-->
+<!--  <meta name="viewport" content="width=390,initial-scale=1.0" />-->
+<!--  <meta name="viewport" content="width=395" />-->
+<!--  <meta name="viewport" content="width=395,initial-scale=1.0" />-->
+<!--  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />-->
+  <script type="text/javascript">
+    $(function () {
+      $("#getVersion").click(function () {
+        if (window.BenJSExternal) {
+          var appVersion = BenJSExternal.getVersion();
+          console.log(appVersion);
+          alert(appVersion);
+        } else {
+          var message = {
+            func: "getVersion"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
+
+      $("#getSum").click(function () {
+        if (window.BenJSExternal) {
+          var sum = BenJSExternal.getSum(1, 2, 93);
+          console.log(sum);
+          alert(sum);
+        } else {
+          var message = {
+            func: "getSum",
+            args: [1, 2, 93]
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
+
+      $("#showNotice").click(function () {
+        if (window.BenJSExternal) {
+          BenJSExternal.showNotice("this is a test!!!");
+        } else {
+          var message = {
+            func: "showNotice",
+            message: "hello world"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message);
+        }
+      });
+    });
+    window.callbackInWKWebView = (funcName, result) => {
+      alert(funcName + " return " + result);
+      return "callback finish";
+    }
+  </script>
+</head>
+
+<body>
+  <br />
+  <a href="###" id="getVersion">getVersionXX</a>
+  <br />
+  <br />
+  <a href="###" id="getSum">getSumXX</a>
+  <br />
+  <br />
+  <a href="###" id="showNotice">showNoticeXX</a>
+  <br />
+  <br />
+  <!--  <div class="bottom_text">点我点我</div>-->
+</body>
+
+<style>
+  html,
+  body {
+      width: 326px;
+      background: gray;
+  }
+  body {
+    color: white;
+    text-align: center;
+  }
+
+<!--  .bottom_text {-->
+<!--    background: blue;-->
+<!--    text-align: center;-->
+<!--    color: red;-->
+<!--    font-size: 1rem;-->
+<!--  }-->
+</style>
+
+</html>

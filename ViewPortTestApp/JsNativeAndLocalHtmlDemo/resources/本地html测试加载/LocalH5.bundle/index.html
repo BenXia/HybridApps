@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <title>index_legend2</title>
+  <meta charset="utf-8">
+  <meta name="keywords" content="轻轻家教,家教上门一对一,名师家教,小学奥数,初中数学,家教app">
+  <meta name="description" content="轻轻家教是目前国内领先的大型家教APP，已携手教育培训行业巨头学而思，致力于通过大数据为学生匹配适合的老师上门授课，按次付费有保障，让家长足不出户找到合适的好老师，快速提高学生成绩。">
+  <meta name="applicable-device" content="mobile">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+  <script>!function () { var a = "@charset \"utf-8\";html{color:#000;background:#fff;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}", b = document.createElement("style"); if (document.getElementsByTagName("head")[0].appendChild(b), b.styleSheet) b.styleSheet.disabled || (b.styleSheet.cssText = a); else try { b.innerHTML = a } catch (c) { b.innerText = a } }(); !function (a, b) { function c() { var b = f.getBoundingClientRect().width; b / i > 540 && (b = 540 * i); var c = b / 10; f.style.fontSize = c + "px", k.rem = a.rem = c } var d, e = a.document, f = e.documentElement, g = e.querySelector('meta[name="viewport"]'), h = e.querySelector('meta[name="flexible"]'), i = 0, j = 0, k = b.flexible || (b.flexible = {}); if (g) { console.warn("将根据已有的meta标签来设置缩放比例"); var l = g.getAttribute("content").match(/initial\-scale=([\d\.]+)/); l && (j = parseFloat(l[1]), i = parseInt(1 / j)) } else if (h) { var m = h.getAttribute("content"); if (m) { var n = m.match(/initial\-dpr=([\d\.]+)/), o = m.match(/maximum\-dpr=([\d\.]+)/); n && (i = parseFloat(n[1]), j = parseFloat((1 / i).toFixed(2))), o && (i = parseFloat(o[1]), j = parseFloat((1 / i).toFixed(2))) } } if (!i && !j) { var p = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)), q = a.devicePixelRatio; i = p ? q >= 3 && (!i || i >= 3) ? 3 : q >= 2 && (!i || i >= 2) ? 2 : 1 : 1, j = 1 / i } if (f.setAttribute("data-dpr", i), !g) if (g = e.createElement("meta"), g.setAttribute("name", "viewport"), g.setAttribute("content", "initial-scale=" + j + ", maximum-scale=" + j + ", minimum-scale=" + j + ", user-scalable=no"), f.firstElementChild) f.firstElementChild.appendChild(g); else { var r = e.createElement("div"); r.appendChild(g), e.write(r.innerHTML) } a.addEventListener("resize", function () { clearTimeout(d), d = setTimeout(c, 300) }, !1), a.addEventListener("pageshow", function (a) { a.persisted && (clearTimeout(d), d = setTimeout(c, 300)) }, !1), "complete" === e.readyState ? e.body.style.fontSize = 12 * i + "px" : e.addEventListener("DOMContentLoaded", function () { e.body.style.fontSize = 12 * i + "px" }, !1), c(), k.dpr = a.dpr = i, k.refreshRem = c, k.rem2px = function (a) { var b = parseFloat(a) * this.rem; return "string" == typeof a && a.match(/rem$/) && (b += "px"), b }, k.px2rem = function (a) { var b = parseFloat(a) / this.rem; return "string" == typeof a && a.match(/px$/) && (b += "rem"), b } }(window, window.lib || (window.lib = {}));</script>
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./test.css">
+  <script type="text/javascript">
+    $(function () {
+      $("#getVersion").click(function () {
+        if (window.BenJSExternal) {
+          var appVersion = BenJSExternal.getVersion();
+          console.log(appVersion);
+          alert(appVersion);
+        } else {
+          var message = {
+            func: "getVersion"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
+
+      $("#getSum").click(function () {
+        if (window.BenJSExternal) {
+          var sum = BenJSExternal.getSum(1, 2, 93);
+          console.log(sum);
+          alert(sum);
+        } else {
+          var message = {
+            func: "getSum",
+            args: [1, 2, 93]
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message)
+        }
+      });
+
+      $("#showNotice").click(function () {
+        if (window.BenJSExternal) {
+          BenJSExternal.showNotice("this is a test!!!");
+        } else {
+          var message = {
+            func: "showNotice",
+            message: "hello world"
+          }
+          window.webkit.messageHandlers.BenJSExternal.postMessage(message);
+        }
+      });
+    });
+    window.callbackInWKWebView = (funcName, result) => {
+      alert(funcName + " return " + result);
+      return "callback finish";
+    }
+  </script>
+</head>
+
+<body>
+  <br />
+  <a href="###" id="getVersion">getVersion</a>
+  <br />
+  <br />
+  <a href="###" id="getSum">getSum</a>
+  <br />
+  <br />
+  <a href="###" id="showNotice">showNotice</a>
+  <br />
+  <br />
+  <div class="bottom_text" id="bottom_text">点我点我</div>
+  <br />
+  <div class="image_content"><img id="justdoit_image" src="./test.png" alt="logo image" /></div>
+</body>
+
+<script src="./test.js"></script>
+<!--    <script type="text/javascript">-->
+<!--        var myDiv = document.getElementById("bottom_text");-->
+<!--        -->
+<!--        //var myImage = document.getElementById("justdoit_image");-->
+<!--        -->
+<!--        myDiv.onclick = function() {-->
+<!--            alert("abc");-->
+<!--        }-->
+<!--    </script>-->
+
+<!--    <style>-->
+<!--        .bottom_text {-->
+<!--            color: red;-->
+<!--            font-size: 3rem;-->
+<!--        }-->
+<!--    </style>-->
+
+</html>
