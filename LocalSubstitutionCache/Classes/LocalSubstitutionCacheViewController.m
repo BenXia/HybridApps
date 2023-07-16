@@ -21,7 +21,7 @@
 	((UIWebView *)self.view).scalesPageToFit = YES;
 	NSURLRequest *request =
 		[NSURLRequest
-			requestWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
+			requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
 	[(UIWebView *)self.view loadRequest:request];
 }
 

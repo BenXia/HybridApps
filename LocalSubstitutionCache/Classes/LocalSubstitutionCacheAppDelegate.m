@@ -19,7 +19,6 @@
 @implementation LocalSubstitutionCacheAppDelegate
 
 @synthesize window;
-@synthesize viewController;
 
 
 #pragma mark -
@@ -33,18 +32,14 @@
 	[NSURLCache setSharedURLCache:cache];
 
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[LocalSubstitutionCacheViewController alloc] init];
+    [self.window makeKeyAndVisible];
 
     return YES;
 }
 
-
-- (void)dealloc {
-    [viewController release];
-    [window release];
-    [super dealloc];
-}
-
-
 @end
+
+
+

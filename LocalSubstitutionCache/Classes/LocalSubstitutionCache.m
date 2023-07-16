@@ -20,7 +20,8 @@
 {
 	return
 		[NSDictionary dictionaryWithObjectsAndKeys:
-			@"fakeGlobalNavBG.png", @"http://images.apple.com/global/nav/images/globalnavbg.png",
+			//@"fakeGlobalNavBG.png", @"http://images.apple.com/global/nav/images/globalnavbg.png",
+            @"fakeGlobalNavBG.png", @"https://www.baidu.com/img/flexible/logo/plus_logo_web_2.png",
 		nil];
 }
 

@@ -16,13 +16,9 @@
 
 @class LocalSubstitutionCacheViewController;
 
-@interface LocalSubstitutionCacheAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    LocalSubstitutionCacheViewController *viewController;
-}
+@interface LocalSubstitutionCacheAppDelegate : NSObject <UIApplicationDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet LocalSubstitutionCacheViewController *viewController;
+@property (nonatomic, strong) UIWindow *window;
 
 @end
 
