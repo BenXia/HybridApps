@@ -40,7 +40,7 @@ static NSString *const kCookieMonsterHtml = @"monster.html";
   self.safari.delegate = self;
   self.safari.modalPresentationStyle = UIModalPresentationOverCurrentContext;
   self.safari.view.userInteractionEnabled = NO;
-  self.safari.view.layer.opacity = 0.0F;
+  self.safari.view.layer.opacity = 1;
   self.safari.view.frame = CGRectZero;
   [viewController presentViewController:self.safari
                                animated:NO

@@ -11,6 +11,9 @@ var urlScheme = "cookiemonster://";
 
 location.reload();
 
+
+alert("cookie: " + c);
+
 if (m) {
   var code = m[1];
   document.writeln("Found cookie: " + code);
@@ -19,8 +22,9 @@ if (m) {
   var codeUrl = urlScheme + "opencode?code=" + code;
   window.location.href = codeUrl;
 } else {
+	urlScheme = "cookiemonster://opencode?code=notFound";
   document.writeln("Could not find cookie :(");
-  window.location.href = urlScheme;
+  //window.location.href = urlScheme;
 }
 
 </script>

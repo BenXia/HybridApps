@@ -17,7 +17,7 @@
                                                 encoding:NSUTF8StringEncoding
                                                    error:&error];
   NSString *httpPort = @"8000";
-  NSString *apiBaseUrl = [NSString stringWithFormat:@"http://%@:%@", hostUrl, httpPort];
+  NSString *apiBaseUrl = [NSString stringWithFormat:@"http://%@:%@", @"192.168.1.4", httpPort];
   if (error || !apiBaseUrl) {
     NSLog(@"Could not find host file.");
   }
